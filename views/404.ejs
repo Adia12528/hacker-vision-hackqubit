@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .error-container {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .error-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .error-code {
+            font-size: 6rem;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+        
+        .error-message {
+            font-size: 1.5rem;
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+        
+        .error-description {
+            color: #6b7280;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <% if (user) { %>
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="/auth/logout">Logout</a>
+                <% } else { %>
+                    <a href="/auth/login">Login</a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+
+    <div class="error-container">
+        <div class="error-icon">🔍</div>
+        <div class="error-code">404</div>
+        <div class="error-message">Page Not Found</div>
+        <div class="error-description">
+            The page you're looking for doesn't exist or has been moved. 
+            Don't worry, let's get you back on track with your tax filing.
+        </div>
+        
+        <div class="hero-buttons">
+            <a href="/" class="btn btn-primary">Go Home</a>
+            <% if (user) { %>
+                <a href="/dashboard" class="btn btn-secondary">Dashboard</a>
+            <% } else { %>
+                <a href="/auth/login" class="btn btn-secondary">Login</a>
+            <% } %>
+            <a href="/taxbot" class="btn btn-secondary">Get Help from TaxBot</a>
+        </div>
+        
+        <!-- Quick Links -->
+        <div style="margin-top: 3rem; padding: 2rem; background: #f8fafc; border-radius: 1rem; display: inline-block;">
+            <h3 style="margin-bottom: 1rem; color: #374151;">Popular Pages</h3>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <a href="/filing/start" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Start Filing</a>
+                <a href="/learn" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Learn Center</a>
+                <a href="/taxbot" class="btn btn-secondary" style="padding: 0.5rem 1rem;">TaxBot</a>
+                <a href="/settings" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Settings</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

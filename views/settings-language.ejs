@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .language-options {
+            display: grid;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .language-option {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .language-option:hover {
+            border-color: #2563eb;
+            background: #f0f9ff;
+            transform: translateY(-2px);
+        }
+        
+        .language-option.selected {
+            border-color: #2563eb;
+            background: #dbeafe;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+        
+        .language-flag {
+            font-size: 2rem;
+            margin-right: 1.5rem;
+        }
+        
+        .language-info {
+            flex: 1;
+        }
+        
+        .language-name {
+            font-weight: 600;
+            color: #374151;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .language-native {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        .language-description {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .selected-badge {
+            background: #10b981;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 1rem;
+        }
+        
+        .language-preview {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid #2563eb;
+        }
+        
+        .preview-title {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-links">
+                <a href="/settings">Back to Settings</a>
+                <a href="/dashboard">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h1 style="text-align: center; margin-bottom: 1rem;">Choose Your Language</h1>
+        <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">
+            Select your preferred language for the Tax Assistant interface
+        </p>
+        
+        <form action="/settings/language" method="POST">
+            <div class="language-options">
+                <!-- English Option -->
+                <label class="language-option <%= currentLanguage === 'en' ? 'selected' : '' %>">
+                    <input type="radio" name="language" value="en" <%= currentLanguage === 'en' ? 'checked' : '' %> hidden>
+                    <div class="language-flag">🇺🇸</div>
+                    <div class="language-info">
+                        <div class="language-name">English</div>
+                        <div class="language-native">English</div>
+                        <div class="language-description">Default language with full feature support</div>
+                    </div>
+                    <% if (currentLanguage === 'en') { %>
+                        <div class="selected-badge">Selected</div>
+                    <% } %>
+                </label>
+                
+                <!-- Hindi Option -->
+                <label class="language-option <%= currentLanguage === 'hi' ? 'selected' : '' %>">
+                    <input type="radio" name="language" value="hi" <%= currentLanguage === 'hi' ? 'checked' : '' %> hidden>
+                    <div class="language-flag">🇮🇳</div>
+                    <div class="language-info">
+                        <div class="language-name">Hindi</div>
+                        <div class="language-native">हिंदी</div>
+                        <div class="language-description">Full interface translation with voice support</div>
+                    </div>
+                    <% if (currentLanguage === 'hi') { %>
+                        <div class="selected-badge">Selected</div>
+                    <% } %>
+                </label>
+            </div>
+            
+            <!-- Language Preview -->
+            <div class="language-preview">
+                <div class="preview-title">Preview:</div>
+                <% if (currentLanguage === 'en') { %>
+                    <p>"Welcome to Tax Assistant! Let's make tax filing simple and stress-free."</p>
+                <% } else if (currentLanguage === 'hi') { %>
+                    <p>"टैक्स असिस्टेंट में आपका स्वागत है! आइए टैक्स फाइलिंग को सरल और तनावमुक्त बनाएं।"</p>
+                <% } %>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <button type="submit" class="btn btn-primary" style="padding: 0.75rem 2rem;">
+                    Save Language Preference
+                </button>
+                <a href="/settings" class="btn btn-secondary" style="margin-left: 1rem;">Cancel</a>
+            </div>
+        </form>
+        
+        <!-- Coming Soon Languages -->
+        <div style="margin-top: 3rem; padding: 1.5rem; background: #f8fafc; border-radius: 1rem;">
+            <h3 style="color: #374151; margin-bottom: 1rem;">More Languages Coming Soon</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div style="padding: 1rem; background: white; border-radius: 0.5rem; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🇮🇳</div>
+                    <div style="font-weight: 600;">Marathi</div>
+                    <div style="color: #6b7280; font-size: 0.9rem;">मराठी</div>
+                </div>
+                <div style="padding: 1rem; background: white; border-radius: 0.5rem; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🇮🇳</div>
+                    <div style="font-weight: 600;">Tamil</div>
+                    <div style="color: #6b7280; font-size: 0.9rem;">தமிழ்</div>
+                </div>
+                <div style="padding: 1rem; background: white; border-radius: 0.5rem; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🇮🇳</div>
+                    <div style="font-weight: 600;">Bengali</div>
+                    <div style="color: #6b7280; font-size: 0.9rem;">বাংলা</div>
+                </div>
+                <div style="padding: 1rem; background: white; border-radius: 0.5rem; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🇮🇳</div>
+                    <div style="font-weight: 600;">Telugu</div>
+                    <div style="color: #6b7280; font-size: 0.9rem;">తెలుగు</div>
+                </div>
+            </div>
+            <p style="text-align: center; color: #6b7280; margin-top: 1rem;">
+                We're working on adding more Indian languages to serve you better!
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Language selection
+        document.querySelectorAll('.language-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from all options
+                document.querySelectorAll('.language-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                // Check the radio button
+                this.querySelector('input[type="radio"]').checked = true;
+                
+                // Update preview based on selection
+                updatePreview(this.querySelector('input[type="radio"]').value);
+            });
+        });
+        
+        function updatePreview(language) {
+            const preview = document.querySelector('.language-preview p');
+            if (language === 'en') {
+                preview.textContent = '"Welcome to Tax Assistant! Let\'s make tax filing simple and stress-free."';
+            } else if (language === 'hi') {
+                preview.textContent = '"टैक्स असिस्टेंट में आपका स्वागत है! आइए टैक्स फाइलिंग को सरल और तनावमुक्त बनाएं।"';
+            }
+        }
+    </script>
+</body>
+</html>

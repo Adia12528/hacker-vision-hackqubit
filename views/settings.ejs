@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .settings-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .settings-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .settings-section h3 {
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f3f4f6;
+        }
+        
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+        
+        .setting-info {
+            flex: 1;
+        }
+        
+        .setting-title {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+        
+        .setting-description {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        .setting-action {
+            margin-left: 1rem;
+        }
+        
+        .language-option {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .language-option:hover {
+            border-color: #2563eb;
+            background: #f0f9ff;
+        }
+        
+        .language-option.selected {
+            border-color: #2563eb;
+            background: #dbeafe;
+        }
+        
+        .language-flag {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+        
+        .language-info {
+            flex: 1;
+        }
+        
+        .language-name {
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .language-native {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #10b981;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/auth/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="form-container settings-container">
+        <h1 style="text-align: center; margin-bottom: 2rem;">Settings</h1>
+        
+        <!-- Language Settings -->
+        <div class="settings-section">
+            <h3>🌍 Language & Region</h3>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-title">Preferred Language</div>
+                    <div class="setting-description">Choose your preferred language for the interface</div>
+                </div>
+                <div class="setting-action">
+                    <a href="/settings/language" class="btn btn-primary" style="padding: 0.5rem 1rem;">
+                        <% if (settings.language === 'en') { %>
+                            English
+                        <% } else if (settings.language === 'hi') { %>
+                            हिंदी
+                        <% } %>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-title">Currency</div>
+                    <div class="setting-description">Display currency for all amounts</div>
+                </div>
+                <div class="setting-action">
+                    <span style="color: #374151; font-weight: 500;">Indian Rupee (₹)</span>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-title">Time Zone</div>
+                    <div class="setting-description">Your local time zone for deadlines and notifications</div>
+                </div>
+                <div class="setting-action">
+                    <span style="color: #374151; font-weight: 500;">IST (India Standard Time)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Settings -->
+        <div class="settings-section">
+            <h3>🔔 Notifications</h3>
+            
+            <form action="/settings/update" method="POST">
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-title">Email Notifications</div>
+                        <div class="setting-description">Receive important updates and filing reminders via email</div>
+                    </div>
+                    <div class="setting-action">
+                        <label class="switch">
+                            <input type="checkbox" name="notifications" <%= settings.notifications ? 'checked' : '' %>>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-title">Tax Deadline Alerts</div>
+                        <div class="setting-description">Get reminders for important tax filing deadlines</div>
+                    </div>
+                    <div class="setting-action">
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <div class="setting-title">Security Alerts</div>
+                        <div class="setting-description">Notifications about account security and login activity</div>
+                    </div>
+                    <div class="setting-action">
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button type="submit" class="btn btn-primary">Save Notification Settings</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Appearance Settings -->
+        <div class="settings-section">
+            <h3>🎨 Appearance</h3>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-title">Theme</div>
+                    <div class="setting-description">Choose between light and dark mode</div>
+                </div>
+                <div class="setting-action">
+                    <select name="theme" class="form-group" style="width: auto; margin: 0;">
+                        <option value="light" <%= settings.theme === 'light' ? 'selected' : '' %>>Light Mode</option>
+                        <option value="dark" <%= settings.theme === 'dark' ? 'selected' : '' %>>Dark Mode</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-title">Font Size</div>
+                    <div class="setting-description">Adjust the text size for better readability</div>
+                </div>
+                <div class="setting-action">
+                    <select class="form-group" style="width: auto; margin: 0;">
+                        <option>Small</option>
+                        <option selected>Medium</option>
+                        <option>Large</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Settings -->
+        <div class="settings-section">
+            <h3>🔒 Security</h3>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-title">Two-Factor Authentication</div>
+                    <div class="setting-description">Add an extra layer of security to your account</div>
+                </div>
+                <div class="setting-action">
+                    <button class="btn btn-secondary" onclick="showComingSoon()" style="padding: 0.5rem 1rem;">Enable 2FA</button>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-title">Login History</div>
+                    <div class="setting-description">View recent login activity on your account</div>
+                </div>
+                <div class="setting-action">
+                    <button class="btn btn-secondary" onclick="showComingSoon()" style="padding: 0.5rem 1rem;">View History</button>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-title">Data Export</div>
+                    <div class="setting-description">Download your personal data and tax records</div>
+                </div>
+                <div class="setting-action">
+                    <button class="btn btn-secondary" onclick="showComingSoon()" style="padding: 0.5rem 1rem;">Export Data</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+            <a href="/" class="btn btn-primary">Go to Home</a>
+        </div>
+    </div>
+
+    <script>
+        function showComingSoon() {
+            alert('This feature is coming soon! We are working hard to bring you more security features.');
+        }
+        
+        // Theme switcher
+        document.querySelector('select[name="theme"]').addEventListener('change', function() {
+            // In a real app, you would save this preference and apply the theme
+            alert('Theme preference saved! The theme will be applied in the next update.');
+        });
+    </script>
+</body>
+</html>
