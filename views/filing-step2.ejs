@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/auth/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h1>Step 2: Income Details</h1>
+        
+        <div class="progress-bar">
+            <div class="progress-step">1. Profile</div>
+            <div class="progress-step active">2. Income</div>
+            <div class="progress-step">3. Deductions</div>
+            <div class="progress-step">4. Regime</div>
+            <div class="progress-step">5. Review</div>
+            <div class="progress-step">6. File</div>
+        </div>
+        
+        <form action="/filing/step2" method="POST" enctype="multipart/form-data">
+            <div class="feature-card">
+                <h3>📁 Upload Form-16 (Recommended)</h3>
+                <p>Upload your Form-16 for automatic data extraction</p>
+                <input type="file" name="form16" accept=".pdf,.jpg,.png">
+                <p style="font-size: 0.9rem; color: #6b7280; margin-top: 0.5rem;">Supported formats: PDF, JPG, PNG</p>
+            </div>
+            
+            <div style="text-align: center; margin: 1rem 0;">
+                <strong>OR</strong>
+            </div>
+            
+            <div class="feature-card">
+                <h3>✍️ Enter Manually</h3>
+                <div class="form-group">
+                    <label>Annual Salary Income:</label>
+                    <input type="number" name="salary" placeholder="Enter your annual salary">
+                </div>
+                <div class="form-group">
+                    <label>Other Income (if any):</label>
+                    <input type="number" name="otherIncome" placeholder="Other income sources">
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Save & Continue</button>
+        </form>
+    </div>
+</body>
+</html>

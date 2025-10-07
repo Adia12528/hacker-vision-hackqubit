@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/taxbot">TaxBot</a>
+                <a href="/auth/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h1>Start Your Tax Filing</h1>
+        <p>Welcome, <%= user.name %>! Let's file your income tax return step by step.</p>
+        
+        <div class="progress-bar">
+            <div class="progress-step active">1. Profile</div>
+            <div class="progress-step">2. Income</div>
+            <div class="progress-step">3. Deductions</div>
+            <div class="progress-step">4. Regime</div>
+            <div class="progress-step">5. Review</div>
+            <div class="progress-step">6. File</div>
+        </div>
+        
+        <div class="feature-card">
+            <h3>Ready to begin?</h3>
+            <p>We'll guide you through the complete process:</p>
+            <ul>
+                <li>Verify your personal information</li>
+                <li>Enter income details or upload Form-16</li>
+                <li>Claim eligible deductions</li>
+                <li>Compare tax regimes</li>
+                <li>File your return securely</li>
+            </ul>
+            
+            <a href="/filing/step1" class="btn btn-primary" style="margin-top: 1rem;">Start Filing Process</a>
+        </div>
+    </div>
+</body>
+</html>

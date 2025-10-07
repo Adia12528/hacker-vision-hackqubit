@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-links">
+                <% if (user) { %>
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="/auth/logout">Logout</a>
+                <% } else { %>
+                    <a href="/auth/login">Login</a>
+                    <a href="/auth/register">Register</a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>File Your Taxes in 15 Minutes</h1>
+                <p>AI-powered tax assistant for stress-free, accurate filing</p>
+                <div class="hero-buttons">
+                    <% if (user) { %>
+                        <a href="/filing/start" class="btn btn-primary">Start Filing</a>
+                    <% } else { %>
+                        <a href="/auth/register" class="btn btn-primary">Get Started Free</a>
+                    <% } %>
+                    <a href="/taxbot" class="btn btn-secondary">Ask TaxBot</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Upload Form-16</h3>
+                    <p>Automatically extract data from your documents</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Regime Comparison</h3>
+                    <p>Old vs New tax regime analysis</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Maximize Savings</h3>
+                    <p>Personalized deduction recommendations</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/taxbot">TaxBot</a>
+                <a href="/auth/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h1>Welcome, <%= user.name %>! 👋</h1>
+        <p>Your Tax Filing Dashboard</p>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>📁 Start New Filing</h3>
+                <p>Begin a new income tax return for the current financial year</p>
+                <a href="/filing/start" class="btn btn-primary">Start Filing</a>
+            </div>
+            
+            <div class="feature-card">
+                <h3>📊 Past Returns</h3>
+                <p>View and download your previously filed tax returns</p>
+                <button class="btn btn-secondary" disabled>View History</button>
+            </div>
+            
+            <div class="feature-card">
+                <h3>🤖 TaxBot Assistant</h3>
+                <p>Get help with tax-related questions and calculations</p>
+                <a href="/taxbot" class="btn btn-secondary">Ask TaxBot</a>
+            </div>
+            
+            <div class="feature-card">
+                <h3>📚 Learn Center</h3>
+                <p>Educational resources about income tax in India</p>
+                <a href="/learn" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        
+        <div style="margin-top: 2rem; padding: 1rem; background: #f0f9ff; border-radius: 0.5rem;">
+            <h3>Quick Actions</h3>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                <a href="/filing/start" class="btn btn-primary">File ITR for AY 2024-25</a>
+                <a href="/taxbot" class="btn btn-secondary">Tax Calculator</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

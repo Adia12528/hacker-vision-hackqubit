@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/taxbot">TaxBot</a>
+                <% if (user) { %>
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="/auth/logout">Logout</a>
+                <% } else { %>
+                    <a href="/auth/login">Login</a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h1>Learn Center</h1>
+        <p>Educational resources about income tax filing in India</p>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>📋 Basic Concepts</h3>
+                <ul>
+                    <li>What is Income Tax?</li>
+                    <li>Understanding PAN & TAN</li>
+                    <li>Financial Year vs Assessment Year</li>
+                    <li>What is TDS?</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h3>💰 Deductions</h3>
+                <ul>
+                    <li>Section 80C (₹1.5 Lakh)</li>
+                    <li>Section 80D (Health Insurance)</li>
+                    <li>HRA Exemption</li>
+                    <li>Home Loan Interest</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h3>📊 Tax Regimes</h3>
+                <ul>
+                    <li>Old vs New Regime</li>
+                    <li>Which regime to choose?</li>
+                    <li>Switching between regimes</li>
+                    <li>Salary structure optimization</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h3>📑 Documents</h3>
+                <ul>
+                    <li>Form-16 Explained</li>
+                    <li>Form-26AS (Tax Credit)</li>
+                    <li>Salary Slips</li>
+                    <li>Investment Proofs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
