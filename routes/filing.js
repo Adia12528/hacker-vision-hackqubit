@@ -19,7 +19,7 @@ const upload = multer({ storage });
 router.get('/start', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
     res.render('filing-start', { 
-        title: 'Start Filing - Tax Assistant',
+    title: 'Start Filing - Tax Mate',
         user: req.session.user 
     });
 });
@@ -27,7 +27,7 @@ router.get('/start', (req, res) => {
 router.get('/step1', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
     res.render('filing-step1', { 
-        title: 'Step 1: Profile Setup - Tax Assistant',
+    title: 'Step 1: Profile Setup - Tax Mate',
         user: req.session.user 
     });
 });
@@ -40,7 +40,7 @@ router.post('/step1', (req, res) => {
 router.get('/step2', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
     res.render('filing-step2', { 
-        title: 'Step 2: Income Details - Tax Assistant',
+    title: 'Step 2: Income Details - Tax Mate',
         user: req.session.user 
     });
 });

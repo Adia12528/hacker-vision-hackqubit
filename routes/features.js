@@ -33,7 +33,7 @@ const upload = multer({
 router.get('/quick-start', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
     res.render('filing/quick-start', {
-        title: 'Quick File - Tax Assistant',
+    title: 'Quick File - Tax Mate',
         user: req.session.user
     });
 });
@@ -42,7 +42,7 @@ router.get('/quick-start', (req, res) => {
 router.get('/planner', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
     res.render('features/planner', {
-        title: 'Tax Planner - Tax Assistant',
+    title: 'Tax Planner - Tax Mate',
         user: req.session.user
     });
 });
@@ -51,7 +51,7 @@ router.get('/planner', (req, res) => {
 router.get('/documents', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
     res.render('features/documents', {
-        title: 'Document Vault - Tax Assistant',
+    title: 'Document Vault - Tax Mate',
         user: req.session.user,
         documents: req.session.documents || []
     });
@@ -60,7 +60,7 @@ router.get('/documents', (req, res) => {
 router.get('/documents/upload', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
     res.render('features/upload-documents', {
-        title: 'Upload Documents - Tax Assistant',
+    title: 'Upload Documents - Tax Mate',
         user: req.session.user
     });
 });
@@ -91,7 +91,7 @@ router.post('/documents/upload', upload.array('documents', 10), (req, res) => {
 router.get('/refunds', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
     res.render('features/refunds', {
-        title: 'Refund Tracker - Tax Assistant',
+    title: 'Refund Tracker - Tax Mate',
         user: req.session.user,
         refunds: req.session.refunds || getSampleRefunds()
     });
@@ -100,7 +100,7 @@ router.get('/refunds', (req, res) => {
 router.get('/refunds/history', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
     res.render('features/refund-history', {
-        title: 'Refund History - Tax Assistant',
+    title: 'Refund History - Tax Mate',
         user: req.session.user,
         refundHistory: getRefundHistory()
     });
@@ -110,7 +110,7 @@ router.get('/refunds/history', (req, res) => {
 router.get('/calendar', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
     res.render('features/calendar', {
-        title: 'Tax Calendar - Tax Assistant',
+    title: 'Tax Calendar - Tax Mate',
         user: req.session.user,
         deadlines: getTaxDeadlines()
     });
@@ -119,7 +119,7 @@ router.get('/calendar', (req, res) => {
 // Support Center
 router.get('/support', (req, res) => {
     res.render('features/support', {
-        title: 'Support Center - Tax Assistant',
+    title: 'Support Center - Tax Mate',
         user: req.session.user
     });
 });
@@ -127,7 +127,7 @@ router.get('/support', (req, res) => {
 // Security Page
 router.get('/security', (req, res) => {
     res.render('features/security', {
-        title: 'Security - Tax Assistant',
+    title: 'Security - Tax Mate',
         user: req.session.user
     });
 });
@@ -135,7 +135,7 @@ router.get('/security', (req, res) => {
 // Privacy Page
 router.get('/privacy', (req, res) => {
     res.render('features/privacy', {
-        title: 'Privacy Policy - Tax Assistant',
+    title: 'Privacy Policy - Tax Mate',
         user: req.session.user
     });
 });
@@ -143,7 +143,7 @@ router.get('/privacy', (req, res) => {
 // Contact Page
 router.get('/contact', (req, res) => {
     res.render('features/contact', {
-        title: 'Contact Us - Tax Assistant',
+    title: 'Contact Us - Tax Mate',
         user: req.session.user
     });
 });
@@ -152,7 +152,7 @@ router.get('/contact', (req, res) => {
 router.get('/calculator', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
     res.render('features/calculator', {
-        title: 'Tax Calculator - Tax Assistant',
+    title: 'Tax Calculator - Tax Mate',
         user: req.session.user
     });
 });

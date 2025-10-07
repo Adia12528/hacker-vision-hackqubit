@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     res.render('index', { 
-        title: 'Tax Assistant - Smart Income Tax Filing',
+    title: 'Tax Mate - Smart Income Tax Filing',
         user: req.session.user 
     });
 });
@@ -25,7 +25,7 @@ router.get('/learn', (req, res) => {
 router.get('/dashboard', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
     res.render('dashboard', { 
-        title: 'Dashboard - Tax Assistant',
+    title: 'Dashboard - Tax Mate',
         user: req.session.user 
     });
 });

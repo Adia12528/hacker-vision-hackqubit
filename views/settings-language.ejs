@@ -90,7 +90,7 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-logo"><span class="taxmate-animated">Tax Mate</span></div>
             <div class="nav-links">
                 <a href="/settings">Back to Settings</a>
                 <a href="/dashboard">Dashboard</a>
@@ -101,7 +101,7 @@
     <div class="form-container">
         <h1 style="text-align: center; margin-bottom: 1rem;">Choose Your Language</h1>
         <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">
-            Select your preferred language for the Tax Assistant interface
+            Select your preferred language for the Tax Mate interface
         </p>
         
         <form action="/settings/language" method="POST">
@@ -139,7 +139,7 @@
             <div class="language-preview">
                 <div class="preview-title">Preview:</div>
                 <% if (currentLanguage === 'en') { %>
-                    <p>"Welcome to Tax Assistant! Let's make tax filing simple and stress-free."</p>
+                    <p>"Welcome to Tax Mate! Let's make tax filing simple and stress-free."</p>
                 <% } else if (currentLanguage === 'hi') { %>
                     <p>"टैक्स असिस्टेंट में आपका स्वागत है! आइए टैक्स फाइलिंग को सरल और तनावमुक्त बनाएं।"</p>
                 <% } %>
@@ -205,7 +205,7 @@
         function updatePreview(language) {
             const preview = document.querySelector('.language-preview p');
             if (language === 'en') {
-                preview.textContent = '"Welcome to Tax Assistant! Let\'s make tax filing simple and stress-free."';
+                preview.textContent = '"Welcome to Tax Mate! Let\'s make tax filing simple and stress-free."';
             } else if (language === 'hi') {
                 preview.textContent = '"टैक्स असिस्टेंट में आपका स्वागत है! आइए टैक्स फाइलिंग को सरल और तनावमुक्त बनाएं।"';
             }

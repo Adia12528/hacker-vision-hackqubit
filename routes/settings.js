@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
     res.render('settings', {
-        title: 'Settings - Tax Assistant',
+    title: 'Settings - Tax Mate',
         user: req.session.user,
         settings: req.session.settings || {
             language: 'en',
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 router.get('/language', (req, res) => {
     if (!req.session.user) return res.redirect('/auth/login');
     res.render('settings-language', {
-        title: 'Language Settings - Tax Assistant',
+    title: 'Language Settings - Tax Mate',
         user: req.session.user,
         currentLanguage: req.session.settings?.language || 'en'
     });

@@ -71,6 +71,12 @@ class TaxBot {
             'regime': 'The New Tax Regime has lower rates but fewer deductions, while the Old Regime allows more deductions but has higher rates. Generally:\n• Choose New Regime if your deductions are less than ₹3.75 lakh\n• Choose Old Regime if you have substantial deductions\nI can help you compare if you provide your income details!',
             'form16': 'Form-16 is a TDS certificate from your employer containing:\n• Salary breakdown\n• TDS deducted\n• Other income details\n• Deductions claimed\nYou can upload it in Step 2 of our filing process for automatic data extraction.',
             'deduction': 'Common deductions include:\n• 80C: ₹1.5 lakh (investments)\n• 80D: ₹25,000-₹1 lakh (health insurance)\n• 80E: Education loan interest\n• HRA: Rent allowance\n• 80G: Donations\nWhich deduction would you like to know more about?',
+            'itr': 'ITR stands for Income Tax Return. You need to file it every year to declare your income and taxes paid. I can guide you through the steps or help you choose the right ITR form.',
+            'due date': 'The due date for filing ITR for individuals is usually July 31st of the assessment year. Extensions may apply for certain cases.',
+            'refund': 'Tax refund is the excess tax paid that you can claim back. You can track your refund status in the Refund History section.',
+            'pan': 'PAN (Permanent Account Number) is a unique identifier for taxpayers in India. It is mandatory for filing taxes and financial transactions.',
+            'audit': 'Tax audit is required if your business turnover exceeds ₹1 crore (or ₹50 lakh for professionals). I can help you understand audit requirements.',
+            'advance tax': 'Advance tax is paid in installments if your tax liability exceeds ₹10,000 in a year. It helps avoid interest penalties.',
             'thank': 'You\'re welcome! Feel free to ask if you have more tax-related questions.',
             'bye': 'Goodbye! Remember to file your ITR before the deadline. Come back if you need more help!'
         };
@@ -97,7 +103,15 @@ class TaxBot {
     }
 }
 
-// Initialize TaxBot when page loads
+// Initialize TaxBot and expose askQuestion for voice
+let taxBotInstance;
+function askQuestion(q) {
+    if (taxBotInstance) {
+        taxBotInstance.userInput.value = q;
+        taxBotInstance.sendMessage();
+    }
+}
 document.addEventListener('DOMContentLoaded', () => {
-    new TaxBot();
+    taxBotInstance = new TaxBot();
+    window.askQuestion = askQuestion;
 });

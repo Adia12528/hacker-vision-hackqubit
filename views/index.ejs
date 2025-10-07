@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/js/voiceAssistant.js" defer></script>
+    </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-logo"><span class="taxmate-animated">Tax Mate</span></div>
             <div class="nav-links">
                 <% if (user) { %>
                     <a href="/dashboard">Dashboard</a>
@@ -22,12 +23,20 @@
         </div>
     </nav>
 
+    <div id="voice-assistant-container" style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
+        <button id="voice-assistant-btn" title="AI Voice Assistant" style="padding:0.7rem 1.2rem;border-radius:50%;background:#2563eb;color:#fff;border:none;box-shadow:0 2px 12px rgba(37,99,235,0.18);cursor:pointer;font-size:1.5rem;">
+            <span aria-label="Voice Assistant" style="font-size:2rem;">🎤</span>
+        </button>
+        <span id="voice-assistant-status" style="background:#fff;color:#2563eb;padding:0.4rem 1rem;border-radius:0.7rem;box-shadow:0 2px 12px rgba(37,99,235,0.18);font-size:1.1rem;max-width:220px;text-align:right;"></span>
+    </div>
+    </nav>
+
     <main>
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
                 <h1>File Your Taxes in 15 Minutes</h1>
-                <p>AI-powered tax assistant for stress-free, accurate filing and maximum savings</p>
+                <p>AI-powered tax mate for stress-free, accurate filing and maximum savings</p>
                 <div class="hero-buttons">
                     <% if (user) { %>
                         <a href="/filing/start" class="btn btn-primary">Continue Filing</a>
@@ -43,7 +52,7 @@
         <!-- Features Section -->
         <section class="features">
             <div class="form-container">
-                <h2>Why Choose Our Tax Assistant?</h2>
+                <h2>Why Choose Our Tax Mate?</h2>
                 <p class="text-center" style="color: #6b7280; margin-bottom: 3rem;">Experience the future of tax filing with our intelligent AI-powered platform</p>
                 
                 <div class="feature-grid">
@@ -365,7 +374,7 @@
     <footer style="background: #111827; color: white; padding: 2rem; text-align: center;">
         <div class="nav-container">
             <div style="flex: 1;">
-                <div class="nav-logo" style="color: white; margin-bottom: 1rem;">Tax Assistant</div>
+                <div class="nav-logo" style="color: white; margin-bottom: 1rem;"><span class="taxmate-animated">Tax Mate</span></div>
                 <p style="color: #9ca3af; max-width: 400px; margin: 0 auto;">
                     Making tax filing simple, secure, and smart for every Indian taxpayer.
                 </p>
@@ -379,7 +388,7 @@
         </div>
         <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #374151;">
             <p style="color: #6b7280; font-size: 0.9rem;">
-                &copy; 2024 Tax Assistant. All rights reserved. | DPDP Act Compliant
+                &copy; 2024 Tax Mate. All rights reserved. | DPDP Act Compliant
             </p>
         </div>
     </footer>

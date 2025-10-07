@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/css/style.css">
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/js/voiceAssistant.js" defer></script>
+        <script src="/js/taxbotVoice.js" defer></script>
+        <style>
         .chat-container {
             max-width: 800px;
             margin: 2rem auto;
@@ -22,6 +24,10 @@
             text-align: center;
         }
         
+                <button id="voice-assistant-btn" title="AI Voice Assistant" style="position:absolute;top:10px;right:10px;padding:0.5rem 1rem;border-radius:50%;background:#2563eb;color:#fff;border:none;box-shadow:0 2px 8px rgba(37,99,235,0.12);cursor:pointer;font-size:1.2rem;z-index:200;">
+                    <span aria-label="Voice Assistant" style="font-size:1.5rem;">🎤</span>
+                </button>
+                <span id="voice-assistant-status" style="position:absolute;top:50px;right:10px;background:#fff;color:#2563eb;padding:0.3rem 0.8rem;border-radius:0.5rem;box-shadow:0 2px 8px rgba(37,99,235,0.12);font-size:1rem;z-index:200;"></span>
         .chat-messages {
             height: 400px;
             overflow-y: auto;
@@ -84,10 +90,20 @@
         }
     </style>
 </head>
-<body>
+    <body>
+    <div id="voice-assistant-container" style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
+        <button id="voice-assistant-btn" title="AI Voice Assistant" style="padding:0.7rem 1.2rem;border-radius:50%;background:#2563eb;color:#fff;border:none;box-shadow:0 2px 12px rgba(37,99,235,0.18);cursor:pointer;font-size:1.5rem;">
+            <span aria-label="Voice Assistant" style="font-size:2rem;">🎤</span>
+        </button>
+        <span id="voice-assistant-status" style="background:#fff;color:#2563eb;padding:0.4rem 1rem;border-radius:0.7rem;box-shadow:0 2px 12px rgba(37,99,235,0.18);font-size:1.1rem;max-width:220px;text-align:right;"></span>
+        <button id="taxbot-voice-btn" title="Ask TaxBot by Voice" style="margin-top:0.5rem;padding:0.7rem 1.2rem;border-radius:50%;background:#10b981;color:#fff;border:none;box-shadow:0 2px 12px rgba(16,185,129,0.18);cursor:pointer;font-size:1.5rem;">
+            <span aria-label="TaxBot Voice" style="font-size:2rem;">🗣️</span>
+        </button>
+        <span id="taxbot-voice-status" style="background:#fff;color:#10b981;padding:0.4rem 1rem;border-radius:0.7rem;box-shadow:0 2px 12px rgba(16,185,129,0.18);font-size:1.1rem;max-width:220px;text-align:right;"></span>
+    </div>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-logo"><span class="taxmate-animated">Tax Mate</span></div>
             <div class="nav-links">
                 <a href="/">Home</a>
                 <% if (user) { %>
@@ -130,5 +146,6 @@
             document.getElementById('send-btn').click();
         }
     </script>
+    <!-- Removed duplicate taxbot-voice-container -->
 </body>
 </html>

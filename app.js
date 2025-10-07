@@ -30,11 +30,11 @@ app.use('/', require('./routes/features')); // Add this line for features
 // 404 Handler
 app.use((req, res) => {
     res.status(404).render('404', {
-        title: 'Page Not Found - Tax Assistant',
+    title: 'Page Not Found - Tax Mate',
         user: req.session.user
     });
 });
 
 app.listen(PORT, () => {
-    console.log(`Tax Assistant running on http://localhost:${PORT}`);
+    console.log(`Tax Mate running on http://localhost:${PORT}`);
 });

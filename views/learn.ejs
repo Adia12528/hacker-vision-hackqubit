@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-logo"><span class="taxmate-animated">Tax Mate</span></div>
             <div class="nav-links">
                 <a href="/">Home</a>
                 <a href="/taxbot">TaxBot</a>
@@ -22,6 +22,12 @@
             </div>
         </div>
     </nav>
+        <div id="voice-assistant-container" style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
+            <button id="voice-assistant-btn" title="AI Voice Assistant" style="padding:0.7rem 1.2rem;border-radius:50%;background:#2563eb;color:#fff;border:none;box-shadow:0 2px 12px rgba(37,99,235,0.18);cursor:pointer;font-size:1.5rem;">
+                <span aria-label="Voice Assistant" style="font-size:2rem;">🎤</span>
+            </button>
+            <span id="voice-assistant-status" style="background:#fff;color:#2563eb;padding:0.4rem 1rem;border-radius:0.7rem;box-shadow:0 2px 12px rgba(37,99,235,0.18);font-size:1.1rem;max-width:220px;text-align:right;"></span>
+        </div>
 
     <div class="form-container">
         <h1>Learn Center</h1>

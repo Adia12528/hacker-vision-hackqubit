@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-logo"><span class="taxmate-animated">Tax Mate</span></div>
             <div class="nav-links">
                 <a href="/dashboard">Dashboard</a>
                 <a href="/filing/start">File Taxes</a>
@@ -29,7 +29,7 @@
                     <div style="font-weight: 600;"><%= deadline.title %></div>
                     <div style="color: #6b7280;"><%= new Date(deadline.date).toLocaleDateString() %></div>
                 </div>
-                <div style="<%= deadline.passed ? 'color: #ef4444;' : 'color: #10b981;' %>">
+                <div style="color: "<%= deadline.passed ? '#ef4444' : '#10b981' %>;">
                     <%= deadline.passed ? 'Passed' : 'Upcoming' %>
                 </div>
             </div>

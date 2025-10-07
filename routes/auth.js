@@ -6,7 +6,7 @@ const users = [];
 
 router.get('/login', (req, res) => {
     res.render('login', { 
-        title: 'Login - Tax Assistant',
+    title: 'Login - Tax Mate',
         user: req.session.user 
     });
 });
@@ -20,7 +20,7 @@ router.post('/login', (req, res) => {
 
 router.get('/register', (req, res) => {
     res.render('register', { 
-        title: 'Register - Tax Assistant',
+    title: 'Register - Tax Mate',
         user: req.session.user 
     });
 });
