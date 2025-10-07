@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-links">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/refunds">Refund Tracker</a>
+                <a href="/auth/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h1>📊 Refund History</h1>
+        <p style="color: #6b7280; margin-bottom: 2rem;">Your tax refund history over the years</p>
+
+        <div style="background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <% refundHistory.forEach(refund => { %>
+            <div style="display: flex; justify-content: between; align-items: center; padding: 1rem; border-bottom: 1px solid #e5e7eb;">
+                <div>
+                    <div style="font-weight: 600;">Assessment Year <%= refund.year %></div>
+                    <div style="color: #6b7280;">Credited on <%= refund.date %></div>
+                </div>
+                <div style="color: #10b981; font-weight: 600; font-size: 1.2rem;">
+                    ₹<%= refund.amount.toLocaleString() %>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="/refunds" class="btn btn-primary">Back to Tracker</a>
+            <a href="/dashboard" class="btn btn-secondary" style="margin-left: 1rem;">Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

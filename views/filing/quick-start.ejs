@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-links">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/filing/start">Regular Filing</a>
+                <a href="/auth/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h1>🚀 Quick File</h1>
+        <p style="color: #6b7280; margin-bottom: 2rem;">Start your tax filing in under 5 minutes</p>
+
+        <div style="background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h3>Perfect for Salaried Employees</h3>
+            <p>Quick File is designed for individuals with simple tax situations:</p>
+            <ul>
+                <li>Single source of income (Salary)</li>
+                <li>Standard deductions only</li>
+                <li>No complex investments or business income</li>
+            </ul>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/filing/start" class="btn btn-primary">Start Quick Filing</a>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="/filing/start" class="btn btn-secondary">Use Regular Filing Instead</a>
+        </div>
+    </div>
+</body>
+</html>

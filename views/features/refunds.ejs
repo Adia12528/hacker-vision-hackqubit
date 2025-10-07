@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-links">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/filing/start">File Taxes</a>
+                <a href="/auth/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h1>💰 Refund Tracker</h1>
+        <p style="color: #6b7280; margin-bottom: 2rem;">Track your tax refund status in real-time</p>
+
+        <div class="feature-grid">
+            <% refunds.forEach(refund => { %>
+            <div class="feature-card" style="border-left: 4px solid #10b981;">
+                <h3>AY <%= refund.assessmentYear %></h3>
+                <p><strong>Status:</strong> <span style="color: #10b981;"><%= refund.status %></span></p>
+                <p><strong>Refund Amount:</strong> ₹<%= refund.amount.toLocaleString() %></p>
+                <p><strong>Filed Date:</strong> <%= new Date(refund.filedDate).toLocaleDateString() %></p>
+                <% if (refund.processedDate) { %>
+                    <p><strong>Processed:</strong> <%= new Date(refund.processedDate).toLocaleDateString() %></p>
+                <% } %>
+                <% if (refund.estimatedCredit) { %>
+                    <p><strong>Estimated Credit:</strong> <%= new Date(refund.estimatedCredit).toLocaleDateString() %></p>
+                <% } %>
+            </div>
+            <% }); %>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="/refunds/history" class="btn btn-primary">View Refund History</a>
+            <a href="/dashboard" class="btn btn-secondary" style="margin-left: 1rem;">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
