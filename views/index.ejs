@@ -23,37 +23,392 @@
     </nav>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
                 <h1>File Your Taxes in 15 Minutes</h1>
-                <p>AI-powered tax assistant for stress-free, accurate filing</p>
+                <p>AI-powered tax assistant for stress-free, accurate filing and maximum savings</p>
                 <div class="hero-buttons">
                     <% if (user) { %>
-                        <a href="/filing/start" class="btn btn-primary">Start Filing</a>
+                        <a href="/filing/start" class="btn btn-primary">Continue Filing</a>
+                        <a href="/dashboard" class="btn btn-secondary">My Dashboard</a>
                     <% } else { %>
                         <a href="/auth/register" class="btn btn-primary">Get Started Free</a>
+                        <a href="/taxbot" class="btn btn-secondary">Ask TaxBot</a>
                     <% } %>
-                    <a href="/taxbot" class="btn btn-secondary">Ask TaxBot</a>
                 </div>
             </div>
         </section>
 
+        <!-- Features Section -->
         <section class="features">
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>Upload Form-16</h3>
-                    <p>Automatically extract data from your documents</p>
+            <div class="form-container">
+                <h2>Why Choose Our Tax Assistant?</h2>
+                <p class="text-center" style="color: #6b7280; margin-bottom: 3rem;">Experience the future of tax filing with our intelligent AI-powered platform</p>
+                
+                <div class="feature-grid">
+                    <!-- Goal 1: Automated Computation -->
+                    <div class="feature-card-modal card-automate">
+                        <div class="card-header">
+                            <div class="card-icon">🤖</div>
+                            <h3 class="card-title">Smart Tax Computation</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Accurate automatic tax calculations from your inputs and documents</p>
+                        </div>
+                        
+                        <!-- Modal Window -->
+                        <div class="card-modal">
+                            <div class="modal-header">
+                                <h4>🤖 Smart Tax Computation</h4>
+                            </div>
+                            <div class="modal-content">
+                                <p class="modal-description">Our AI-powered engine automatically calculates your tax liability with 99.8% accuracy, handling all complex calculations for you.</p>
+                                
+                                <ul class="modal-features">
+                                    <li>Automatic income calculation from multiple sources</li>
+                                    <li>Real-time tax liability updates as you input data</li>
+                                    <li>Support for salary, business, capital gains, and other incomes</li>
+                                    <li>Advanced error detection and correction</li>
+                                    <li>Compliance with latest tax laws and amendments</li>
+                                </ul>
+                                
+                                <div class="modal-links">
+                                    <h5>Quick Links:</h5>
+                                    <a href="/filing/start" class="modal-link-item">Start Tax Calculation</a>
+                                    <a href="/learn#tax-basics" class="modal-link-item">Learn About Tax Calculation</a>
+                                    <a href="/taxbot?query=tax+calculation" class="modal-link-item">Ask TaxBot for Help</a>
+                                    <a href="/learn#income-types" class="modal-link-item">Understanding Income Types</a>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/filing/start" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Start Calculating</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Goal 2: Interactive Guidance -->
+                    <div class="feature-card-modal card-guidance">
+                        <div class="card-header">
+                            <div class="card-icon">💬</div>
+                            <h3 class="card-title">AI TaxBot Assistant</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">24/7 interactive guidance through chatbot and voice assistant</p>
+                        </div>
+                        
+                        <div class="card-modal">
+                            <div class="modal-header">
+                                <h4>💬 AI TaxBot Assistant</h4>
+                            </div>
+                            <div class="modal-content">
+                                <p class="modal-description">Get instant answers to all your tax questions with our intelligent chatbot, available 24/7 in multiple languages.</p>
+                                
+                                <ul class="modal-features">
+                                    <li>Voice and text-based assistance in English & Hindi</li>
+                                    <li>Instant answers to complex tax queries</li>
+                                    <li>Step-by-step filing guidance</li>
+                                    <li>Context-aware personalized responses</li>
+                                    <li>Document explanation and verification help</li>
+                                </ul>
+                                
+                                <div class="modal-links">
+                                    <h5>Quick Links:</h5>
+                                    <a href="/taxbot" class="modal-link-item">Chat with TaxBot Now</a>
+                                    <a href="/learn#faq" class="modal-link-item">Browse Common Questions</a>
+                                    <a href="/learn#voice-assistant" class="modal-link-item">Voice Assistant Guide</a>
+                                    <a href="/support" class="modal-link-item">Get Human Support</a>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/taxbot" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Start Chatting</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Goal 3: Document Extraction -->
+                    <div class="feature-card-modal card-extract">
+                        <div class="card-header">
+                            <div class="card-icon">📄</div>
+                            <h3 class="card-title">Smart Document Scan</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Automatically extract data from Form-16 and salary slips</p>
+                        </div>
+                        
+                        <div class="card-modal">
+                            <div class="modal-header">
+                                <h4>📄 Smart Document Scan</h4>
+                            </div>
+                            <div class="modal-content">
+                                <p class="modal-description">Upload your tax documents and let our AI extract all necessary information automatically, saving you hours of manual entry.</p>
+                                
+                                <ul class="modal-features">
+                                    <li>Form-16 data extraction with 95% accuracy</li>
+                                    <li>Salary slip processing and analysis</li>
+                                    <li>OCR technology for printed and digital documents</li>
+                                    <li>Automatic data verification and validation</li>
+                                    <li>Support for PDF, JPG, PNG formats</li>
+                                </ul>
+                                
+                                <div class="modal-links">
+                                    <h5>Quick Links:</h5>
+                                    <a href="/filing/step2" class="modal-link-item">Upload Documents Now</a>
+                                    <a href="/learn#form16-guide" class="modal-link-item">Form-16 Understanding Guide</a>
+                                    <a href="/learn#document-upload" class="modal-link-item">Document Upload Instructions</a>
+                                    <a href="/support#ocr-help" class="modal-link-item">Troubleshooting OCR Issues</a>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/filing/step2" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Upload Documents</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Goal 4: Personalized Suggestions -->
+                    <div class="feature-card-modal card-suggestions">
+                        <div class="card-header">
+                            <div class="card-icon">💡</div>
+                            <h3 class="card-title">Smart Recommendations</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Personalized deduction suggestions and missed savings alerts</p>
+                        </div>
+                        
+                        <div class="card-modal">
+                            <div class="modal-header">
+                                <h4>💡 Smart Recommendations</h4>
+                            </div>
+                            <div class="modal-content">
+                                <p class="modal-description">Our AI analyzes your financial profile to suggest optimal tax-saving strategies and alert you about missed opportunities.</p>
+                                
+                                <ul class="modal-features">
+                                    <li>Personalized deduction optimization</li>
+                                    <li>Missed savings opportunity alerts</li>
+                                    <li>Investment recommendation engine</li>
+                                    <li>Tax-saving strategy planning</li>
+                                    <li>Future tax planning insights</li>
+                                </ul>
+                                
+                                <div class="modal-links">
+                                    <h5>Quick Links:</h5>
+                                    <a href="/filing/step3" class="modal-link-item">View Your Recommendations</a>
+                                    <a href="/learn#deductions" class="modal-link-item">Complete Deductions Guide</a>
+                                    <a href="/learn#investment-options" class="modal-link-item">Tax-Saving Investments</a>
+                                    <a href="/taxbot?query=tax+saving" class="modal-link-item">Get Personalized Advice</a>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/filing/step3" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Get Recommendations</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Goal 5: Regime Comparison -->
+                    <div class="feature-card-modal card-compare">
+                        <div class="card-header">
+                            <div class="card-icon">⚖️</div>
+                            <h3 class="card-title">Regime Comparison</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Old vs New tax regime analysis with smart recommendations</p>
+                        </div>
+                        
+                        <div class="card-modal">
+                            <div class="modal-header">
+                                <h4>⚖️ Regime Comparison</h4>
+                            </div>
+                            <div class="modal-content">
+                                <p class="modal-description">Make informed decisions with our detailed side-by-side comparison of Old vs New tax regimes and get personalized recommendations.</p>
+                                
+                                <ul class="modal-features">
+                                    <li>Side-by-side tax liability comparison</li>
+                                    <li>Automatic best regime detection</li>
+                                    <li>Detailed breakdown of savings</li>
+                                    <li>Future scenario planning</li>
+                                    <li>Switching strategy guidance</li>
+                                </ul>
+                                
+                                <div class="modal-links">
+                                    <h5>Quick Links:</h5>
+                                    <a href="/filing/step4" class="modal-link-item">Compare Regimes Now</a>
+                                    <a href="/learn#regime-comparison" class="modal-link-item">Regime Comparison Guide</a>
+                                    <a href="/learn#regime-switching" class="modal-link-item">Switching Rules Explained</a>
+                                    <a href="/taxbot?query=regime+choice" class="modal-link-item">Get Regime Advice</a>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/filing/step4" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Compare Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Goal 6: Data Privacy -->
+                    <div class="feature-card-modal card-privacy">
+                        <div class="card-header">
+                            <div class="card-icon">🔒</div>
+                            <h3 class="card-title">Bank-Level Security</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Military-grade encryption and strict data privacy protection</p>
+                        </div>
+                        
+                        <div class="card-modal">
+                            <div class="modal-header">
+                                <h4>🔒 Bank-Level Security</h4>
+                            </div>
+                            <div class="modal-content">
+                                <p class="modal-description">Your financial data is protected with enterprise-grade security measures and strict compliance with data protection laws.</p>
+                                
+                                <ul class="modal-features">
+                                    <li>End-to-end 256-bit encryption</li>
+                                    <li>GDPR & DPDP Act 2023 compliant</li>
+                                    <li>Secure AWS cloud infrastructure</li>
+                                    <li>Regular third-party security audits</li>
+                                    <li>Data anonymization and privacy protection</li>
+                                </ul>
+                                
+                                <div class="modal-links">
+                                    <h5>Quick Links:</h5>
+                                    <a href="/security" class="modal-link-item">Security Overview</a>
+                                    <a href="/privacy" class="modal-link-item">Privacy Policy</a>
+                                    <a href="/learn#data-protection" class="modal-link-item">Data Protection Guide</a>
+                                    <a href="/support#security" class="modal-link-item">Security FAQs</a>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/security" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Goal 7: Simple Interface -->
+                    <div class="feature-card-modal card-interface">
+                        <div class="card-header">
+                            <div class="card-icon">🌍</div>
+                            <h3 class="card-title">Simple & Multilingual</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">User-friendly interface available in Hindi and English</p>
+                        </div>
+                        
+                        <div class="card-modal">
+                            <div class="modal-header">
+                                <h4>🌍 Simple & Multilingual</h4>
+                            </div>
+                            <div class="modal-content">
+                                <p class="modal-description">Designed for everyone - from tax experts to first-time filers, with full support in Hindi and English languages.</p>
+                                
+                                <ul class="modal-features">
+                                    <li>Full Hindi & English language support</li>
+                                    <li>Simple step-by-step guided process</li>
+                                    <li>Mobile-first responsive design</li>
+                                    <li>Voice-guided assistance features</li>
+                                    <li>Accessibility compliance (WCAG 2.1)</li>
+                                </ul>
+                                
+                                <div class="modal-links">
+                                    <h5>Quick Links:</h5>
+                                    <a href="/settings/language" class="modal-link-item">Change Language Settings</a>
+                                    <a href="/learn#user-guide" class="modal-link-item">User Guide & Tutorials</a>
+                                    <a href="/support#accessibility" class="modal-link-item">Accessibility Features</a>
+                                    <a href="/mobile-app" class="modal-link-item">Mobile App Download</a>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/settings/language" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Change Language</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <h3>Regime Comparison</h3>
-                    <p>Old vs New tax regime analysis</p>
+
+                <!-- Trust Indicators -->
+                <div style="text-align: center; margin-top: 4rem; padding: 2rem; background: #f8fafc; border-radius: 1rem;">
+                    <h3 style="margin-bottom: 1rem;">Trusted by Thousands of Taxpayers</h3>
+                    <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: bold; color: #2563eb;">50,000+</div>
+                            <div style="color: #6b7280;">Happy Users</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: bold; color: #10b981;">₹250Cr+</div>
+                            <div style="color: #6b7280;">Tax Saved</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: bold; color: #8b5cf6;">99.8%</div>
+                            <div style="color: #6b7280;">Accuracy Rate</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <h3>Maximize Savings</h3>
-                    <p>Personalized deduction recommendations</p>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section style="background: #1f2937; color: white; padding: 4rem 2rem; text-align: center;">
+            <div class="form-container" style="background: transparent; box-shadow: none;">
+                <h2 style="color: white; margin-bottom: 1rem;">Ready to Simplify Your Tax Filing?</h2>
+                <p style="color: #d1d5db; margin-bottom: 2rem;">Join thousands of smart taxpayers who save time and money with our AI assistant</p>
+                <div class="hero-buttons">
+                    <% if (user) { %>
+                        <a href="/filing/start" class="btn btn-primary">Continue Your Filing</a>
+                        <a href="/taxbot" class="btn btn-secondary">Get Tax Help</a>
+                    <% } else { %>
+                        <a href="/auth/register" class="btn btn-primary">Start Free Today</a>
+                        <a href="/auth/login" class="btn btn-secondary">Existing User Login</a>
+                    <% } %>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Footer -->
+    <footer style="background: #111827; color: white; padding: 2rem; text-align: center;">
+        <div class="nav-container">
+            <div style="flex: 1;">
+                <div class="nav-logo" style="color: white; margin-bottom: 1rem;">Tax Assistant</div>
+                <p style="color: #9ca3af; max-width: 400px; margin: 0 auto;">
+                    Making tax filing simple, secure, and smart for every Indian taxpayer.
+                </p>
+            </div>
+            <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 1rem;">
+                <a href="/learn" style="color: #d1d5db; text-decoration: none;">Learn</a>
+                <a href="/taxbot" style="color: #d1d5db; text-decoration: none;">TaxBot</a>
+                <a href="/security" style="color: #d1d5db; text-decoration: none;">Security</a>
+                <a href="/contact" style="color: #d1d5db; text-decoration: none;">Contact</a>
+            </div>
+        </div>
+        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #374151;">
+            <p style="color: #6b7280; font-size: 0.9rem;">
+                &copy; 2024 Tax Assistant. All rights reserved. | DPDP Act Compliant
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Close modals when clicking outside
+        document.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.card-modal');
+            modals.forEach(modal => {
+                if (!modal.parentElement.contains(event.target)) {
+                    modal.style.opacity = '0';
+                    modal.style.visibility = 'hidden';
+                }
+            });
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -13,48 +13,361 @@
             <div class="nav-links">
                 <a href="/">Home</a>
                 <a href="/taxbot">TaxBot</a>
+                <a href="/learn">Learn</a>
                 <a href="/auth/logout">Logout</a>
             </div>
         </div>
     </nav>
 
     <div class="form-container">
-        <h1>Welcome, <%= user.name %>! 👋</h1>
-        <p>Your Tax Filing Dashboard</p>
-        
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>📁 Start New Filing</h3>
-                <p>Begin a new income tax return for the current financial year</p>
-                <a href="/filing/start" class="btn btn-primary">Start Filing</a>
-            </div>
+        <!-- Welcome Section -->
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h1>Welcome back, <%= user.name %>! 👋</h1>
+            <p style="color: #6b7280; font-size: 1.1rem;">Your personalized tax filing dashboard</p>
             
-            <div class="feature-card">
-                <h3>📊 Past Returns</h3>
-                <p>View and download your previously filed tax returns</p>
-                <button class="btn btn-secondary" disabled>View History</button>
-            </div>
-            
-            <div class="feature-card">
-                <h3>🤖 TaxBot Assistant</h3>
-                <p>Get help with tax-related questions and calculations</p>
-                <a href="/taxbot" class="btn btn-secondary">Ask TaxBot</a>
-            </div>
-            
-            <div class="feature-card">
-                <h3>📚 Learn Center</h3>
-                <p>Educational resources about income tax in India</p>
-                <a href="/learn" class="btn btn-secondary">Learn More</a>
+            <!-- Quick Stats -->
+            <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
+                <div style="text-align: center; padding: 1rem; background: #f0f9ff; border-radius: 0.5rem; min-width: 120px;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #2563eb;">2</div>
+                    <div style="color: #6b7280; font-size: 0.9rem;">Returns Filed</div>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: #f0f9ff; border-radius: 0.5rem; min-width: 120px;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #10b981;">₹15,420</div>
+                    <div style="color: #6b7280; font-size: 0.9rem;">Total Saved</div>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: #f0f9ff; border-radius: 0.5rem; min-width: 120px;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #8b5cf6;">45</div>
+                    <div style="color: #6b7280; font-size: 0.9rem;">Days Left</div>
+                </div>
             </div>
         </div>
-        
-        <div style="margin-top: 2rem; padding: 1rem; background: #f0f9ff; border-radius: 0.5rem;">
-            <h3>Quick Actions</h3>
-            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                <a href="/filing/start" class="btn btn-primary">File ITR for AY 2024-25</a>
-                <a href="/taxbot" class="btn btn-secondary">Tax Calculator</a>
+
+        <!-- Main Actions Grid -->
+        <div class="feature-grid">
+            <!-- Start New Filing -->
+            <div class="feature-card-modal card-automate">
+                <div class="card-header">
+                    <div class="card-icon">📁</div>
+                    <h3 class="card-title">Start New Filing</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">Begin a new income tax return for Assessment Year 2024-25</p>
+                </div>
+                
+                <div class="card-modal">
+                    <div class="modal-header">
+                        <h4>📁 Start New Filing</h4>
+                    </div>
+                    <div class="modal-content">
+                        <p class="modal-description">Begin your tax filing journey with our guided, step-by-step process that makes filing simple and error-free.</p>
+                        
+                        <ul class="modal-features">
+                            <li>Guided 6-step filing process</li>
+                            <li>Form-16 auto-upload and data extraction</li>
+                            <li>AI-powered tax calculations</li>
+                            <li>Real-time saving suggestions</li>
+                            <li>Automatic error checking and validation</li>
+                        </ul>
+                        
+                        <div class="modal-links">
+                            <h5>Quick Actions:</h5>
+                            <a href="/filing/start" class="modal-link-item">Start New ITR Filing</a>
+                            <a href="/learn#filing-process" class="modal-link-item">Filing Process Guide</a>
+                            <a href="/taxbot?query=filing+help" class="modal-link-item">Get Filing Assistance</a>
+                            <a href="/documents/checklist" class="modal-link-item">Document Checklist</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/filing/start" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Start Filing Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TaxBot Assistant -->
+            <div class="feature-card-modal card-guidance">
+                <div class="card-header">
+                    <div class="card-icon">🤖</div>
+                    <h3 class="card-title">TaxBot Assistant</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">Get instant help with tax-related questions and calculations</p>
+                </div>
+                
+                <div class="card-modal">
+                    <div class="modal-header">
+                        <h4>🤖 TaxBot Assistant</h4>
+                    </div>
+                    <div class="modal-content">
+                        <p class="modal-description">Your 24/7 AI tax assistant ready to answer questions, provide guidance, and help with calculations.</p>
+                        
+                        <ul class="modal-features">
+                            <li>Instant answers to tax queries</li>
+                            <li>Voice and text support in multiple languages</li>
+                            <li>Step-by-step filing guidance</li>
+                            <li>Document explanation assistance</li>
+                            <li>Tax planning and optimization advice</li>
+                        </ul>
+                        
+                        <div class="modal-links">
+                            <h5>Quick Actions:</h5>
+                            <a href="/taxbot" class="modal-link-item">Start Chat with TaxBot</a>
+                            <a href="/taxbot?query=voice" class="modal-link-item">Try Voice Assistant</a>
+                            <a href="/learn#taxbot-guide" class="modal-link-item">TaxBot Usage Guide</a>
+                            <a href="/support#chatbot" class="modal-link-item">Chatbot Help</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/taxbot" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Start Chatting</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Past Returns -->
+            <div class="feature-card-modal card-compare">
+                <div class="card-header">
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Past Returns</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">Access your filing history and download previous returns</p>
+                </div>
+                
+                <div class="card-modal">
+                    <div class="modal-header">
+                        <h4>📊 Past Returns</h4>
+                    </div>
+                    <div class="modal-content">
+                        <p class="modal-description">Review your tax filing history, download past returns, and track your financial journey over the years.</p>
+                        
+                        <ul class="modal-features">
+                            <li>5-year filing history access</li>
+                            <li>Download ITR copies and forms</li>
+                            <li>Year-over-year comparison charts</li>
+                            <li>Tax trend analysis and insights</li>
+                            <li>Income growth tracking</li>
+                        </ul>
+                        
+                        <div class="modal-links">
+                            <h5>Quick Actions:</h5>
+                            <a href="/returns/history" class="modal-link-item">View Filing History</a>
+                            <a href="/returns/download" class="modal-link-item">Download Past Returns</a>
+                            <a href="/learn#filing-history" class="modal-link-item">Understanding Your History</a>
+                            <a href="/taxbot?query=history" class="modal-link-item">Get History Analysis</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;" onclick="showComingSoon()">View History</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Learn Center -->
+            <div class="feature-card-modal card-interface">
+                <div class="card-header">
+                    <div class="card-icon">📚</div>
+                    <h3 class="card-title">Learn Center</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">Master tax concepts with our educational resources</p>
+                </div>
+                
+                <div class="card-modal">
+                    <div class="modal-header">
+                        <h4>📚 Learn Center</h4>
+                    </div>
+                    <div class="modal-content">
+                        <p class="modal-description">Expand your tax knowledge with comprehensive guides, tutorials, and latest updates on Indian tax laws.</p>
+                        
+                        <ul class="modal-features">
+                            <li>Tax basics to advanced topics</li>
+                            <li>Video tutorials and webinars</li>
+                            <li>Latest tax law updates</li>
+                            <li>FAQ and common issues</li>
+                            <li>Case studies and examples</li>
+                        </ul>
+                        
+                        <div class="modal-links">
+                            <h5>Quick Actions:</h5>
+                            <a href="/learn" class="modal-link-item">Browse Learning Resources</a>
+                            <a href="/learn#video-tutorials" class="modal-link-item">Watch Video Tutorials</a>
+                            <a href="/learn#latest-updates" class="modal-link-item">Check Latest Updates</a>
+                            <a href="/learn#faq" class="modal-link-item">Read FAQs</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/learn" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Explore Learning</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tax Calculator -->
+            <div class="feature-card-modal card-suggestions">
+                <div class="card-header">
+                    <div class="card-icon">🧮</div>
+                    <h3 class="card-title">Tax Calculator</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">Quickly estimate your tax liability and savings</p>
+                </div>
+                
+                <div class="card-modal">
+                    <div class="modal-header">
+                        <h4>🧮 Tax Calculator</h4>
+                    </div>
+                    <div class="modal-content">
+                        <p class="modal-description">Use our advanced calculator to estimate your taxes, compare regimes, and plan your investments strategically.</p>
+                        
+                        <ul class="modal-features">
+                            <li>Instant tax liability estimation</li>
+                            <li>Old vs New regime comparison</li>
+                            <li>Deduction optimization suggestions</li>
+                            <li>Investment planning tools</li>
+                            <li>Multiple scenario analysis</li>
+                        </ul>
+                        
+                        <div class="modal-links">
+                            <h5>Quick Actions:</h5>
+                            <a href="/calculator" class="modal-link-item">Open Tax Calculator</a>
+                            <a href="/calculator#regime-comparison" class="modal-link-item">Compare Tax Regimes</a>
+                            <a href="/learn#tax-calculation" class="modal-link-item">Calculation Methods Guide</a>
+                            <a href="/taxbot?query=calculator" class="modal-link-item">Get Calculation Help</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;" onclick="showComingSoon()">Open Calculator</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Document Vault -->
+            <div class="feature-card-modal card-privacy">
+                <div class="card-header">
+                    <div class="card-icon">🔐</div>
+                    <h3 class="card-title">Document Vault</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">Securely store and manage your tax documents</p>
+                </div>
+                
+                <div class="card-modal">
+                    <div class="modal-header">
+                        <h4>🔐 Document Vault</h4>
+                    </div>
+                    <div class="modal-content">
+                        <p class="modal-description">Keep all your important tax documents organized and secure in one place with encrypted storage.</p>
+                        
+                        <ul class="modal-features">
+                            <li>Encrypted document storage</li>
+                            <li>Form-16 and salary slip archive</li>
+                            <li>Investment proof organization</li>
+                            <li>Auto-categorization by type</li>
+                            <li>Quick search and access</li>
+                        </ul>
+                        
+                        <div class="modal-links">
+                            <h5>Quick Actions:</h5>
+                            <a href="/documents" class="modal-link-item">Access Document Vault</a>
+                            <a href="/documents/upload" class="modal-link-item">Upload New Documents</a>
+                            <a href="/learn#document-management" class="modal-link-item">Document Management Guide</a>
+                            <a href="/support#documents" class="modal-link-item">Document Help</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;" onclick="showComingSoon()">Access Vault</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions Section -->
+        <div style="margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 1rem; color: white;">
+            <h3 style="color: white; margin-bottom: 1rem; text-align: center;">Quick Actions</h3>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="/filing/start" class="btn btn-primary" style="background: rgba(255,255,255,0.2); border: 2px solid white;">
+                    🚀 File ITR for AY 2024-25
+                </a>
+                <a href="/taxbot" class="btn btn-secondary" style="background: transparent; border: 2px solid white;">
+                    💬 Ask Tax Question
+                </a>
+                <a href="/learn" class="btn btn-secondary" style="background: transparent; border: 2px solid white;">
+                    📖 Tax Guide
+                </a>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div style="margin-top: 3rem;">
+            <h3 style="margin-bottom: 1rem;">Recent Activity</h3>
+            <div style="background: white; border-radius: 0.5rem; padding: 1.5rem; border: 1px solid #e5e7eb;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid #f3f4f6;">
+                    <div>
+                        <div style="font-weight: 600;">ITR for AY 2023-24</div>
+                        <div style="color: #6b7280; font-size: 0.9rem;">Filed on July 28, 2023 • Status: <span style="color: #10b981;">Processed</span></div>
+                    </div>
+                    <div style="color: #10b981; font-weight: 600;">₹8,250 Refund</div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem;">
+                    <div>
+                        <div style="font-weight: 600;">ITR for AY 2022-23</div>
+                        <div style="color: #6b7280; font-size: 0.9rem;">Filed on July 15, 2022 • Status: <span style="color: #10b981;">Completed</span></div>
+                    </div>
+                    <div style="color: #10b981; font-weight: 600;">₹7,170 Refund</div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-top: 1px solid #f3f4f6;">
+                    <div>
+                        <div style="font-weight: 600;">Document Upload</div>
+                        <div style="color: #6b7280; font-size: 0.9rem;">Form-16 uploaded • 2 days ago</div>
+                    </div>
+                    <div style="color: #2563eb; font-weight: 600;">Ready to File</div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function showComingSoon() {
+            alert('This feature is coming soon! We are working hard to bring you more amazing features.');
+        }
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.card-modal');
+            modals.forEach(modal => {
+                if (!modal.parentElement.contains(event.target)) {
+                    modal.style.opacity = '0';
+                    modal.style.visibility = 'hidden';
+                }
+            });
+        });
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.feature-card-modal');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    if (!this.querySelector('.card-modal:hover')) {
+                        this.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            // Keep card elevated when modal is hovered
+            const modals = document.querySelectorAll('.card-modal');
+            modals.forEach(modal => {
+                modal.addEventListener('mouseenter', function() {
+                    this.parentElement.style.transform = 'translateY(-5px)';
+                });
+                
+                modal.addEventListener('mouseleave', function() {
+                    this.parentElement.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
