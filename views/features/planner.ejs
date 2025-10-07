@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .planner-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .planner-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .plan-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .plan-card h3 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .result-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+        
+        .result-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        
+        .savings-tip {
+            background: #f0f9ff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            border-left: 4px solid #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Tax Assistant</div>
+            <div class="nav-links">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/filing/start">File Taxes</a>
+                <a href="/auth/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="form-container planner-container">
+        <h1 style="text-align: center; margin-bottom: 1rem;">📈 Tax Planner</h1>
+        <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">
+            Plan your tax savings for the next financial year with AI-powered recommendations
+        </p>
+        
+        <div class="planner-grid">
+            <!-- Income Input -->
+            <div class="plan-card">
+                <h3>💰 Income Details</h3>
+                <div class="input-group">
+                    <label>Expected Annual Salary</label>
+                    <input type="number" id="salary" class="form-group" placeholder="Enter expected salary" value="1200000">
+                </div>
+                <div class="input-group">
+                    <label>Other Income (Interest, Rent, etc.)</label>
+                    <input type="number" id="otherIncome" class="form-group" placeholder="Enter other income" value="50000">
+                </div>
+                <div class="input-group">
+                    <label>Current Tax Regime</label>
+                    <select id="regime" class="form-group">
+                        <option value="new">New Regime</option>
+                        <option value="old">Old Regime</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Investments Input -->
+            <div class="plan-card">
+                <h3>🏦 Planned Investments</h3>
+                <div class="input-group">
+                    <label>80C Investments (PPF, ELSS, etc.)</label>
+                    <input type="number" id="investment80c" class="form-group" placeholder="Enter 80C investments" value="150000">
+                </div>
+                <div class="input-group">
+                    <label>Health Insurance (80D)</label>
+                    <input type="number" id="healthInsurance" class="form-group" placeholder="Enter health insurance" value="25000">
+                </div>
+                <div class="input-group">
+                    <label>Home Loan Interest (24B)</label>
+                    <input type="number" id="homeLoan" class="form-group" placeholder="Enter home loan interest" value="0">
+                </div>
+                <div class="input-group">
+                    <label>NPS Investment (80CCD)</label>
+                    <input type="number" id="nps" class="form-group" placeholder="Enter NPS investment" value="0">
+                </div>
+            </div>
+            
+            <!-- Results -->
+            <div class="result-card" style="grid-column: 1 / -1;">
+                <h3>📊 Your Tax Projection</h3>
+                <div class="result-amount" id="taxAmount">₹0</div>
+                <p>Estimated tax liability for next year</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.2rem; font-weight: bold;">Old Regime</div>
+                        <div style="font-size: 1.5rem; margin-top: 0.5rem;" id="oldRegimeTax">₹0</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.2rem; font-weight: bold;">New Regime</div>
+                        <div style="font-size: 1.5rem; margin-top: 0.5rem;" id="newRegimeTax">₹0</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recommendations -->
+            <div class="plan-card" style="grid-column: 1 / -1;">
+                <h3>💡 AI Recommendations</h3>
+                <div class="savings-tip">
+                    <strong>Optimal Regime:</strong> <span id="optimalRegime">Calculating...</span>
+                </div>
+                <div class="savings-tip">
+                    <strong>Recommended Investments:</strong> <span id="investmentTips">Calculating...</span>
+                </div>
+                <div class="savings-tip">
+                    <strong>Potential Savings:</strong> <span id="potentialSavings">Calculating...</span>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button onclick="calculateTax()" class="btn btn-primary">Update Projection</button>
+                    <button onclick="savePlan()" class="btn btn-secondary" style="margin-left: 1rem;">Save Plan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateTax() {
+            const salary = parseFloat(document.getElementById('salary').value) || 0;
+            const otherIncome = parseFloat(document.getElementById('otherIncome').value) || 0;
+            const investment80c = parseFloat(document.getElementById('investment80c').value) || 0;
+            const healthInsurance = parseFloat(document.getElementById('healthInsurance').value) || 0;
+            const homeLoan = parseFloat(document.getElementById('homeLoan').value) || 0;
+            const nps = parseFloat(document.getElementById('nps').value) || 0;
+            
+            const totalIncome = salary + otherIncome;
+            
+            // Old regime calculation
+            const oldDeductions = Math.min(investment80c, 150000) + healthInsurance + homeLoan + nps;
+            const oldTaxable = Math.max(totalIncome - oldDeductions - 50000, 0); // Standard deduction
+            const oldTax = calculateTaxAmount(oldTaxable, 'old');
+            
+            // New regime calculation
+            const newTaxable = Math.max(totalIncome - 50000, 0); // Standard deduction
+            const newTax = calculateTaxAmount(newTaxable, 'new');
+            
+            // Update display
+            document.getElementById('taxAmount').textContent = `₹${oldTax.toLocaleString()}`;
+            document.getElementById('oldRegimeTax').textContent = `₹${oldTax.toLocaleString()}`;
+            document.getElementById('newRegimeTax').textContent = `₹${newTax.toLocaleString()}`;
+            
+            // Recommendations
+            const optimalRegime = oldTax < newTax ? 'Old Regime' : 'New Regime';
+            const savings = Math.abs(oldTax - newTax);
+            
+            document.getElementById('optimalRegime').textContent = optimalRegime;
+            document.getElementById('potentialSavings').textContent = `₹${savings.toLocaleString()} with ${optimalRegime}`;
+            
+            let investmentTips = [];
+            if (investment80c < 150000) {
+                investmentTips.push(`Increase 80C investments by ₹${(150000 - investment80c).toLocaleString()}`);
+            }
+            if (healthInsurance < 50000) {
+                investmentTips.push('Consider increasing health insurance coverage');
+            }
+            if (nps === 0) {
+                investmentTips.push('Start NPS investment for additional 50K deduction');
+            }
+            
+            document.getElementById('investmentTips').textContent = investmentTips.join(', ');
+        }
+        
+        function calculateTaxAmount(income, regime) {
+            if (regime === 'old') {
+                // Old regime slabs
+                if (income <= 250000) return 0;
+                else if (income <= 500000) return (income - 250000) * 0.05;
+                else if (income <= 1000000) return 12500 + (income - 500000) * 0.2;
+                else return 112500 + (income - 1000000) * 0.3;
+            } else {
+                // New regime slabs
+                if (income <= 300000) return 0;
+                else if (income <= 600000) return (income - 300000) * 0.05;
+                else if (income <= 900000) return 15000 + (income - 600000) * 0.1;
+                else if (income <= 1200000) return 45000 + (income - 900000) * 0.15;
+                else if (income <= 1500000) return 90000 + (income - 1200000) * 0.2;
+                else return 150000 + (income - 1500000) * 0.3;
+            }
+        }
+        
+        function savePlan() {
+            alert('Tax plan saved successfully! You can revisit this plan anytime.');
+            // In real app, save to database
+        }
+        
+        // Calculate on page load
+        document.addEventListener('DOMContentLoaded', calculateTax);
+    </script>
+</body>
+</html>

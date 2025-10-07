@@ -13,7 +13,7 @@ app.use(session({
     secret: 'tax-assistant-secret',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // Set to true if using HTTPS
+    cookie: { secure: false }
 }));
 
 // Set EJS as template engine
@@ -24,7 +24,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 app.use('/filing', require('./routes/filing'));
-app.use('/settings', require('./routes/settings')); // Add this line
+app.use('/settings', require('./routes/settings'));
+app.use('/', require('./routes/features')); // Add this line for features
 
 // 404 Handler
 app.use((req, res) => {
